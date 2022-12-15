@@ -1,0 +1,27 @@
+# product
+spring:
+  main:
+    allow-circular-references: true
+  application:
+    name: lw-product
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        namespace: product
+        shared-configs:
+          - data-id: mybatis-common.yml
+            group: DEFAULT_GROUP
+            refresh: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  thymeleaf:
+    cache: true
+
+
+logging:
+  level:
+    com.lw.project: error

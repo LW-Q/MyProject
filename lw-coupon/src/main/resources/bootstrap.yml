@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: lw-coupon
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        namespace: coupon
+        extension-configs:
+          - data-id: lw-coupon.properties
+            group: DEFAULT_GROUP
+            refresh: true
+        shared-configs:
+          - data-id: mybatis-common.yml
+            group: DEFAULT_GROUP
+            refresh: true

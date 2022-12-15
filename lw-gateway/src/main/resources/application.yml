@@ -1,0 +1,64 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: lw_product_route
+          uri: lb://lw-product
+          predicates:
+            - Path=/api/lwproduct/**,/hello
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+        - id: product_route
+          uri: lb://lw-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/product/?(?<segment>.*), /lwproduct/$\{segment}
+        - id: lw_member_route
+          uri: lb://lw-member
+          predicates:
+            - Path=/api/lwmember/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+        - id: member_route
+          uri: lb://lw-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/member/?(?<segment>.*), /lwmember/$\{segment}
+        - id: lw_ware_route
+          uri: lb://lw-ware
+          predicates:
+            - Path=/api/lwware/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /$\{segment}
+        - id: ware_route
+          uri: lb://lw-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/ware/?(?<segment>.*), /lwware/$\{segment}
+        - id: third_party
+          uri: lb://lw-third-party
+          predicates:
+            - Path=/api/thirdparty/**
+          filters:
+            - RewritePath=/api/thirdparty/?(?<segment>.*), /$\{segment}
+        - id: search_route
+          uri: lb://lw-search
+          predicates:
+            - Path=/api/search/**
+          filters:
+            - RewritePath=/api/search/?(?<segment>.*), /$\{segment}
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/?(?<segment>.*), /renren-fast/$\{segment}
+
+
+        - id: mall_host_route
+          uri: lb://lw-product
+          predicates:
+            - Host=**.mall.com,mall.com
