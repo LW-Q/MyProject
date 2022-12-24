@@ -1,7 +1,6 @@
 package com.lw.project.lwproduct.service.impl;
 
 import com.lw.project.lwproduct.entity.AttrEntity;
-import com.lw.project.lwproduct.entity.CategoryEntity;
 import com.lw.project.lwproduct.service.AttrService;
 import com.lw.project.lwproduct.vo.AttrGroupWithAttrsVo;
 import org.apache.commons.lang.StringUtils;
@@ -9,7 +8,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;

@@ -5,7 +5,6 @@ import com.lw.common.utils.PageUtils;
 import com.lw.project.lwproduct.entity.CategoryEntity;
 import com.lw.project.lwproduct.vo.Catelog2Vo;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

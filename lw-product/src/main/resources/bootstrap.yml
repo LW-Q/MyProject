@@ -20,8 +20,13 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   thymeleaf:
     cache: true
+  redis:
+    host: 192.168.56.10
+    port: 6379
 
 
 logging:
   level:
     com.lw.project: error
+server:
+  port: 8091

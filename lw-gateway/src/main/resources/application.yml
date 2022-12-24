@@ -5,7 +5,7 @@ spring:
         - id: lw_product_route
           uri: lb://lw-product
           predicates:
-            - Path=/api/lwproduct/**,/hello
+            - Path=/api/lwproduct/**,/hello/**
           filters:
             - RewritePath=/api/?(?<segment>.*), /$\{segment}
         - id: product_route
