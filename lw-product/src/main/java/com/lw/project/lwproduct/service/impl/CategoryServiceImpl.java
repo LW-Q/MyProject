@@ -186,7 +186,6 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         // 只要是同一把锁，就能锁住需要这个锁的所有线程
         // 本地锁：springboot中所有组件容器都是单例的
         // 但是springboot是分布式的，有很多服务器中不同的实例
-        // TODO 分布式锁
         synchronized (this) {
            return getDataFromDb();
         }
@@ -202,7 +201,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         List<CategoryEntity> entityList = baseMapper.selectList(null);
         // 查出1级分类id
         List<CategoryEntity> level1Categorys = getParent_cid(entityList, 0L);
-        Map<String, List<Catelog2Vo>> result = level1Categorys.stream().collect(Collectors.toMap(k -> k.getCatId().toString(), v -> {
+        Map<String, List<Catelog2Vo>> result =
+                level1Categorys.stream().collect(Collectors.toMap(k -> k.getCatId().toString(), v -> {
             // 查出二级分类list
             List<CategoryEntity> categoryEntities = getParent_cid(entityList, v.getCatId());
             List<Catelog2Vo> catelog2Vos = null;
